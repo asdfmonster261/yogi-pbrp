@@ -182,6 +182,10 @@ TW_FRAMERATE := 120
 TW_CUSTOM_CPU_TEMP_PATH := /dev/thermal_cpu
 
 # Excludes
+# tzdata_twrp copies from a bazel workspace path (out/soong/workspace/...) that is not
+# populated because we build with BUILD_BROKEN_DISABLE_BAZEL. Recovery does not need
+# timezone data to boot; exclude it. Revisit if timestamps in the UI matter.
+TW_EXCLUDE_TZDATA := true
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXCLUDE_TWRPAPP := true
