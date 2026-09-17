@@ -230,3 +230,9 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.
 
 # Workaround
 TARGET_COPY_OUT_VENDOR := vendor
+
+# PitchBlack board config: exports TW_*/screen vars to soong (pbVarsPlugin), pulls in
+# the PB kernel config and sepolicy. Must come after the TW_* vars above so the
+# exported values are ours. Normally provided by a SoC-common tree; we have none, so
+# include it directly.
+include vendor/pb/config/BoardConfigPb.mk
